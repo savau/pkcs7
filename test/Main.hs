@@ -38,7 +38,7 @@ prop_BadPadding1 :: String -> Bool
 prop_BadPadding1 s = isNothing (PKCS7.unpad (badPadding s))
 
 prop_BadPadding2 :: String -> Bool
-prop_BadPadding2 s = isNothing (PKCS7.unpad $ tail (PKCS7.pad (badPadding s)))
+prop_BadPadding2 s = isNothing (PKCS7.unpad $ drop 1 (PKCS7.pad (badPadding s)))
 
 quickCheckArgs = stdArgs { chatty = True }
 
